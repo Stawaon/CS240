@@ -1,3 +1,8 @@
+"""
+This Program sorts a stack of given integers from smallest to largest using recursion. 
+I used w3schools.com as a reference for the stack class and methods.
+"""
+
 # Lab 1: Recursion
 class Stack:
     def __init__(self):
@@ -67,12 +72,12 @@ stack.push(14)
 stack.push(-3)
 
 # Print pre-sorted stack
-print("Stack: ", stack.stack)
+print("Unsorted Stack: ", stack.stack)
 
 # Call sortStack to sort the stack
 sortStack(stack)
 
 # Print sorted stack
-print("Stack: ", stack.stack)
+print("Sorted Stack: ", stack.stack)
 
 
