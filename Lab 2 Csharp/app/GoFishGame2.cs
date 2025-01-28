@@ -90,15 +90,20 @@ public class GoFishGame
         bool opponentHasCard = false;
         // Iterate through opponent's hand to check for card
         opponentIterator = opponentHand.GetCards().GetEnumerator();
+        List<Card> cardsToRemove = new List<Card>();
         while (opponentIterator.MoveNext())
         {
             Card card = opponentIterator.Current;
             if (card.GetRank() == playerRank)
             {
                 opponentHasCard = true;
-                opponentHand.RemoveCard(card);
+                cardsToRemove.Add(card);
                 playerHand.AddCard(card);
             }
+        }
+        foreach (Card card in cardsToRemove)
+        {
+            opponentHand.RemoveCard(card);
         }
 
         // Pause for a second to simulate thinking
@@ -118,7 +123,7 @@ public class GoFishGame
                 deck.GetCards().RemoveAt(0);
                 Thread.Sleep(500);
                 Console.WriteLine("You drew a " + playerHand.GetCards()[playerHand.GetCards().Count - 1].GetRank());
-            }
+            } 
             playerTurn = false;
         }
 
@@ -193,6 +198,7 @@ public class GoFishGame
     // Method to check for books in a player's hand
     private void CheckForBooks(Hand hand, List<Card> books)
     {
+        
         for (int i = 2; i <= 14; i++)
         {
             int count = 0;
@@ -203,20 +209,28 @@ public class GoFishGame
                     count++;
                 }
             }
-            if (count == 4)
+            if (count == 2)
             {
+                List<Card> cardsToRemove = new List<Card>();
                 var iterator = hand.GetCards().GetEnumerator();
                 while (iterator.MoveNext())
                 {
                     Card card = iterator.Current;
                     if (card.GetRank() == i)
                     {
-                        hand.RemoveCard(card);
+                        cardsToRemove.Add(card);
                     }
                 }
+                foreach (Card card in cardsToRemove)
+                {
+                    hand.RemoveCard(card);
+                }
                 books.Add(new Card(i));
+                break; // Exit the loop once a book is found to avoid infinite loop
             }
         }
+        
+        
     }
 
     // Method to print the player's hand
