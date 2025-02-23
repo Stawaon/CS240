@@ -44,7 +44,7 @@ class Tree {
         }
 
         // method removes a node with the given value from the tree.
-        TreeNode<T> removeNode(TreeNode<T>*& node, T value) {
+        TreeNode<T>* removeNode(TreeNode<T>*& node, T value) {
             if (node == nullptr) {
                 return node;
             }
@@ -79,7 +79,7 @@ class Tree {
         }
 
         // helper method for searching a value in pre-order traversal
-        boolean preOrderSearchHelper(TreeNode<T>* node, T value) const {
+        bool preOrderSearchHelper(TreeNode<T>* node, T value) const {
             if (node == nullptr) {
                 return false;
             }
@@ -90,7 +90,7 @@ class Tree {
         }
 
         // helper method for searching a value in in-order traversal
-        boolean inOrderSearchHelper(TreeNode<T>* node, T value) const {
+        bool inOrderSearchHelper(TreeNode<T>* node, T value) const {
             if (node == nullptr) {
                 return false;
             }
@@ -110,7 +110,7 @@ class Tree {
         }
 
         // helper method for searching a value in post-order traversal
-        boolean postOrderSearchHelper(TreeNode<T>* node, T value) const {
+        bool postOrderSearchHelper(TreeNode<T>* node, T value) const {
             if (node == nullptr) {
                 return false;
             }
@@ -156,12 +156,12 @@ class Tree {
             }
 
             // method performs pre-order search of the tree.
-            boolean preOrderSearch(T value) const {
+            bool preOrderSearch(T value) const {
                 return preOrderSearchHelper(root, value);
             }
 
             // method performs in-order traversal of the tree.
-            boolean inOrderSearch(T value) const {
+            bool inOrderSearch(T value) const {
                 return inOrderSearchHelper(root, value);
             }
 
@@ -172,7 +172,7 @@ class Tree {
             }
 
             // method performs post-order search of the tree.
-            boolean postOrderSearch(T value) const {
+            bool postOrderSearch(T value) const {
                 return postOrderSearchHelper(root, value);
             }
 
@@ -182,3 +182,28 @@ class Tree {
             }
             
 };
+
+int main() 
+    {
+        Tree<int> tree;
+        tree.insert(5);
+        tree.insert(3);
+        tree.insert(7);
+        tree.insert(2);
+        tree.insert(4);
+        tree.insert(6);
+        tree.insert(8);
+        tree.insert(1);
+        tree.insert(9);
+        tree.insert(10);
+        tree.inOrderTraversal();
+        tree.preOrderTraversal();
+        tree.postOrderTraversal();
+        tree.outputTree(2);
+        tree.remove(5);
+        tree.inOrderTraversal();
+        tree.preOrderTraversal();
+        tree.postOrderTraversal();
+        tree.outputTree(2);
+        return 0;
+    }
