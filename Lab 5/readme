@@ -1,0 +1,2 @@
+Added methods to AVLTree.java class. Delete, findMin, printTree, as well ass methods to merge two AVL Trees together using sorted Lists.
+Created AVLTreeExample.java to use methods from AVLTree.java and demonstrate functionality of added methods.
